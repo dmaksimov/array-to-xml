@@ -143,7 +143,52 @@ $result = ArrayToXml::convert($array, [
     '_attributes' => [
         'xmlns' => 'https://github.com/spatie/array-to-xml',
     ],
-]);
+], true, 'UTF-8');
+```
+
+Use a multi-dimensional array to create a collection of elements.
+```php
+$array = [
+    'Good guys' => [
+        'Guy' => [
+            ['name' => 'Luke Skywalker', 'weapon' => 'Lightsaber'],
+            ['name' => 'Captain America', 'weapon' => 'Shield'],
+        ],
+    ],
+    'Bad guys' => [
+        'Guy' => [
+            ['name' => 'Sauron', 'weapon' => 'Evil Eye'],
+            ['name' => 'Darth Vader', 'weapon' => 'Lightsaber'],
+        ],
+    ],
+];
+```
+
+This will result in:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<helloyouluckypeople xmlns="https://github.com/spatie/array-to-xml">
+    <Good_guys>
+        <Guy>
+            <name>Luke Skywalker</name>
+            <weapon>Lightsaber</weapon>
+        </Guy>
+        <Guy>
+            <name>Captain America</name>
+            <weapon>Shield</weapon>
+        </Guy>
+    </Good_guys>
+    <Bad_guys>
+        <Guy>
+            <name>Sauron</name>
+            <weapon>Evil Eye</weapon>
+        </Guy>
+        <Guy>
+            <name>Darth Vader</name>
+            <weapon>Lightsaber</weapon>
+        </Guy>
+    </Bad_guys>
+</helloyouluckypeople>
 ```
 
 Use a multi-dimensional array to create a collection of elements.
